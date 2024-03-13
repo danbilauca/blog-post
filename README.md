@@ -2,6 +2,8 @@
 
 This repository contains the sample application for the [MongoDB and Express.js REST API tutorial](https://www.mongodb.com/languages/express-mongodb-rest-api-tutorial).
 
+Before you begin, you will need to have MongoDB installed and running on your local machine. 
+
 ## How To Run
 
 1. Clone the repository
