@@ -4,20 +4,29 @@ This repository contains the sample application for the [MongoDB and Express.js 
 
 ## How To Run
 
-1. You can follow the [Getting Started with Atlas](https://docs.atlas.mongodb.com/getting-started/) guide, to learn how to create a free Atlas account, create your first cluster and get your Connection String to the database.
-Then, set the Atlas URI connection parameter in `server/.env` to your Connection String:
+1. Clone the repository
+2. in `/server` add a `.env` file with the following content:
 ```
-ATLAS_URI=mongodb+srv://<username>:<password>@sandbox.jadwj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+MONGO_USER=mongouser
+MONGO_PASS=mongopassword
+MONGO_HOST=mongohost
+MONGO_PORT=27017
+```
+3. In `/app` add a `.env` file with the following content:
+```
+REACT_APP_API_URL=http://localhost:5050
 ```
 
-2. Start the Express server:
+This would be the URL where the React app will hit in order to communicate with the Express server.
+
+4Start the Express server:
 ```
 cd server
 npm install
-npm run dev
+npm run start
 ```
 
-3. Start the React app (in a new terminal window):
+4. Start the React app (in a new terminal window):
 ```
 cd app
 npm install
