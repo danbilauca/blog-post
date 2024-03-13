@@ -1,7 +1,10 @@
 import { MongoClient } from "mongodb";
 
-const connectionString = process.env.ATLAS_URI || "";
-
+const mongo_user = process.env.MONGO_USER;
+const mongo_pass = process.env.MONGO_PASS;
+const mongo_port = process.env.MONGO_PORT;
+const mongo_host = process.env.MONGO_HOST;
+const connectionString = `mongodb://${mongo_user}:${mongo_pass}@${mongo_host}:${mongo_port}/`;
 const client = new MongoClient(connectionString);
 
 let conn;
