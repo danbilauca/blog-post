@@ -1,12 +1,3 @@
-FROM node:16-alpine
+FROM nginx
 
-WORKDIR /app
-
-COPY ./public /app/public
-COPY ./src /app/src
-COPY ./package.json /app
-COPY ./package-lock.json /app
-
-RUN npm install
-
-CMD ["npm", "start"]
+COPY build /usr/share/nginx/html
