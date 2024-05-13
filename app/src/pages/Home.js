@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { H2 } from "@leafygreen-ui/typography";
 import PostSummary from "../components/PostSummary";
 import { baseUrl } from "../config";
@@ -8,7 +8,7 @@ export default function App() {
 
   useEffect(() => {
     const loadPosts = async () => {
-      let results = await fetch(`${baseUrl}/posts/latest`).then(resp => resp.json());
+      let results = await fetch(`${baseUrl}/latest`).then(resp => resp.json());
       setPosts(results);
     }
 
@@ -20,7 +20,7 @@ export default function App() {
       <H2>Latest Articles</H2>
       <div>
         {posts.map(post => {
-          return(
+          return (
             <PostSummary {...post} key={post._id} />
           )
         })}
