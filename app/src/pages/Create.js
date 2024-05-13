@@ -28,7 +28,8 @@ export default function App() {
     await fetch(`${baseUrl}/`, {
       method: "POST",
       headers: {
-        "content-type": "application/json"
+        "content-type": "application/json",
+        "accept": "*/*"
       },
       body: JSON.stringify({
         author, title, tags: tags.split(","), body
