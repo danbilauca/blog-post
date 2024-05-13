@@ -29,7 +29,7 @@ export default function App() {
       method: "POST",
       headers: {
         "content-type": "application/json",
-        "accept": "*/*"
+        'Access-Control-Allow-Origin': 'https://blog.morgoth.click',
       },
       body: JSON.stringify({
         author, title, tags: tags.split(","), body
