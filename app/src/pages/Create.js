@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { H2 } from "@leafygreen-ui/typography";
 import TextInput from '@leafygreen-ui/text-input';
 import TextArea from "@leafygreen-ui/text-area";
@@ -18,14 +18,14 @@ const formStyle = css`
 `
 
 export default function App() {
-  let [ author, setAuthor ] = useState("");
-  let [ title, setTitle ] = useState("");
-  let [ tags, setTags ] = useState("");
-  let [ body, setBody ] = useState("");
+  let [author, setAuthor] = useState("");
+  let [title, setTitle] = useState("");
+  let [tags, setTags] = useState("");
+  let [body, setBody] = useState("");
   let [toastOpen, setToastOpen] = useState(false);
 
   const handleSubmit = async () => {
-    await fetch(`${baseUrl}/posts`, {
+    await fetch(`${baseUrl}/`, {
       method: "POST",
       headers: {
         "content-type": "application/json"
