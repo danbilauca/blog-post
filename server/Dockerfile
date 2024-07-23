@@ -1,14 +1,27 @@
-FROM node:16-alpine
+ARG NODE_VERSION=20
 
-WORKDIR /app
+#first optimization
+FROM node:${NODE_VERSION}-alpine
 
-COPY ./db /app/db
-COPY ./routes /app/routes
-COPY ./package.json /app
-COPY ./package-lock.json /app
-COPY ./index.mjs /app
-COPY ./loadEnvironment.mjs /app
+ENV ENV=prod
+ENV PORT=3000
+ENV HOME=/home/customuser
+
+RUN apk add shadow
+RUN groupadd -r customgroup && useradd -r -g customgroup customuser
+RUN mkdir -p $HOME && chown -R customuser:customgroup $HOME
+
+WORKDIR $HOME/app
+
+RUN chown -R customuser:customgroup ${HOME}/app
+
+#USER customuser
+
+#second optimization
+COPY package*.json ./
 
 RUN npm install
 
-CMD ["node", "index.mjs"]
+COPY . .
+
+CMD ["node", "index.js"]
