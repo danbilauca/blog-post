@@ -12,10 +12,10 @@ const env = process.env.ENV || 'development'
 console.log('ENV', env);
 
 app.get('/read', (req, res) => {
-    fs.readFile('quotes.json', 'utf8', (err, data) => {
+    fs.readFile('./tmp/quotes.json', 'utf8', (err, data) => {
         if (err) {
-            console.log(err);
-            res.status(500).send('Error reading data');
+            console.error(err);
+            res.status(500).send('Error reading file');
         } else {
             res.send(JSON.stringify(data));
         }
@@ -24,7 +24,7 @@ app.get('/read', (req, res) => {
 
 app.post('/write', (req, res) => {
     const payload = req.body;
-    fs.writeFile('quotes.json', JSON.stringify(payload), (err) => {
+    fs.writeFile('./tmp/quotes.json', JSON.stringify(payload), (err) => {
         if (err) {
             console.error(err);
             res.status(500).send('Error writing to file');
